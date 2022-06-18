@@ -4,6 +4,8 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import useCachedResources from "@/hooks/useCachedResources";
 import useColorScheme from "@/hooks/useColorScheme";
 import Navigation from "@/layout/navigation/Navigation";
+import React from "react";
+import { TailwindProvider } from "tailwindcss-react-native";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -14,10 +16,10 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        {/* <TailwindProvider> */}
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
-        {/* </TailwindProvider> */}
+        <TailwindProvider>
+          <Navigation colorScheme={colorScheme} />
+          <StatusBar />
+        </TailwindProvider>
       </SafeAreaProvider>
     );
   }
