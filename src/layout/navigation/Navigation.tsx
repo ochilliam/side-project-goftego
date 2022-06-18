@@ -1,9 +1,3 @@
-/**
- * If you are not familiar with React Navigation, refer to the "Fundamentals" guide:
- * https://reactnavigation.org/docs/getting-started
- *
- */
-import { Walkthrough } from "@/features/walkthrough/Walkthrough";
 import { FontAwesome } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
@@ -13,20 +7,18 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-import { ColorSchemeName, Pressable } from "react-native";
+import { ColorSchemeName, Pressable, Text } from "react-native";
 
-import Colors from "../constants/Colors";
-import useColorScheme from "../hooks/useColorScheme";
-import ModalScreen from "../screens/ModalScreen";
-import NotFoundScreen from "../screens/NotFoundScreen";
-import TabOneScreen from "../screens/TabOneScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
+import { Walkthrough } from "@/features/walkthrough/Walkthrough";
+import useColorScheme from "@/hooks/useColorScheme";
+import ModalScreen from "@/screens/ModalScreen";
+import NotFoundScreen from "@/screens/NotFoundScreen";
+import LinkingConfiguration from "./LinkingConfiguration";
 import {
   RootStackParamList,
   RootTabParamList,
   RootTabScreenProps,
-} from "../types";
-import LinkingConfiguration from "./LinkingConfiguration";
+} from "./types";
 
 export default function Navigation({
   colorScheme,
@@ -59,7 +51,7 @@ function RootNavigator() {
       }}
     >
       {walkthough ? (
-        <Stack.Screen name="Walkthrough" component={Walkthrough}></Stack.Screen>
+        <Stack.Screen name="Walkthrough" component={Walkthrough} />
       ) : (
         <Stack.Screen
           name="Root"
@@ -89,15 +81,10 @@ function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
   return (
-    <BottomTab.Navigator
-      initialRouteName="TabOne"
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
-      }}
-    >
+    <BottomTab.Navigator initialRouteName="TabOne" screenOptions={{}}>
       <BottomTab.Screen
         name="TabOne"
-        component={TabOneScreen}
+        component={() => <Text>hello</Text>}
         options={({ navigation }: RootTabScreenProps<"TabOne">) => ({
           title: "Tab One",
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
@@ -111,7 +98,6 @@ function BottomTabNavigator() {
               <FontAwesome
                 name="info-circle"
                 size={25}
-                color={Colors[colorScheme].text}
                 style={{ marginRight: 15 }}
               />
             </Pressable>
@@ -120,7 +106,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabTwo"
-        component={TabTwoScreen}
+        component={() => <Text>hello2</Text>}
         options={{
           title: "Tab Two",
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,

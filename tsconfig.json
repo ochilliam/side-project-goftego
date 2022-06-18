@@ -4,8 +4,12 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["./components/*"],
-      "@/features/*": ["./features/*"]
+      "@/components/*": ["./src/components/*"],
+      "@/features/*": ["./src/features/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/layout/*": ["./src/layout/*"],
+      "@/screens/*": ["./src/screens/*"],
+      "@/constants/*": ["./src/constants/*"]
     }
   }
 }
